@@ -1,1 +1,227 @@
-# -
+[転生ライフ.html](https://github.com/user-attachments/files/35113034/default.html)
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>転生ライフ</title>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e6e9ef;--fg:#1d2540;--mute:#5a6480;--card:#f5f6fa;--line:#c3c9d8;--ac:#35624f;--acfg:#fff;--up:#35624f;--down:#9a3b3b;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11152a;--fg:#e4e8f4;--mute:#97a1bf;--card:#1a2040;--line:#313a63;--ac:#8fc5ad;--acfg:#10201a;--up:#8fc5ad;--down:#e59a9a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#11152a;--fg:#e4e8f4;--mute:#97a1bf;--card:#1a2040;--line:#313a63;--ac:#8fc5ad;--acfg:#10201a;--up:#8fc5ad;--down:#e59a9a;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;line-height:1.9;font-size:17px}
+main{max-width:620px;margin:0 auto;padding:28px 20px 60px}
+h1{font-size:30px;letter-spacing:.2em;margin:8px 0 4px;font-weight:700}
+.sub{color:var(--mute);margin:0 0 28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px 20px;margin-bottom:18px}
+.meta{color:var(--mute);font-size:14px;margin:0 0 8px}
+.big{font-size:22px;font-weight:700;margin:0 0 10px}
+button{font:inherit;cursor:pointer;display:block;width:100%;text-align:left;background:transparent;color:var(--fg);border:1px solid var(--fg);border-radius:4px;padding:11px 14px;margin-top:10px}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+button.main{background:var(--ac);color:var(--acfg);border-color:var(--ac);text-align:center;font-weight:700}
+button.main:hover{opacity:.88;background:var(--ac);color:var(--acfg)}
+.stats{display:grid;grid-template-columns:auto 1fr auto;gap:4px 12px;align-items:center;font-size:15px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ac);transition:width .5s}
+.d{font-size:13px;min-width:2em;text-align:right}
+.up{color:var(--up)}.down{color:var(--down)}
+.log{list-style:none;margin:0;padding:0;font-size:15px;color:var(--mute)}
+.log li{padding:6px 0;border-top:1px solid var(--line)}
+.log b{color:var(--fg);margin-right:.6em}
+.hide{display:none}
+.rank{font-size:34px;font-weight:700;margin:4px 0}
+body{font-family:"DotGothic16","Hiragino Kaku Gothic ProN","Yu Gothic",monospace;line-height:1.8;font-size:16px}
+h1{font-weight:400;font-size:32px;text-shadow:3px 3px 0 var(--line)}
+.card{border:4px solid var(--fg);border-radius:0;box-shadow:5px 5px 0 var(--line)}
+button{border:3px solid var(--fg);border-radius:0;box-shadow:3px 3px 0 var(--line);font-weight:400}
+button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
+button.main{font-weight:400;border-color:var(--fg)}
+.big,.rank{font-weight:400}
+.bar{height:12px;border-radius:0;border:2px solid var(--fg);background:var(--card)}
+.bar i{background:repeating-linear-gradient(90deg,var(--ac) 0 6px,transparent 6px 8px);transition:width .4s steps(6)}
+#cv{display:block;width:100%;aspect-ratio:160/90;image-rendering:pixelated;border:4px solid var(--fg);box-shadow:5px 5px 0 var(--line);margin-bottom:22px;background:#000}
+.wrap{position:relative}
+.wrap::after{content:"";position:absolute;left:4px;right:4px;top:4px;bottom:26px;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.07) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.28))}
+.card{position:relative}
+.card::before{content:"";position:absolute;left:0;top:0;width:12px;height:12px;background:var(--fg)}
+#ly{font-size:34px;margin:0}
+.spd{display:flex;gap:10px}
+.spd button{text-align:center;margin-top:10px}
+a.btn{flex:1;display:block;text-align:center;margin-top:10px;padding:11px 8px;color:var(--fg);text-decoration:none;border:3px solid var(--fg);box-shadow:3px 3px 0 var(--line)}
+a.btn:hover{background:var(--fg);color:var(--bg)}
+</style></head>
+<body><main>
+<h1>転生ライフ</h1>
+<p class="sub">目覚めたら、知らない世界の赤ん坊だった。選択のたびに、あなたの一生が形づくられていく。</p>
+<div class="wrap"><canvas id="cv" width="160" height="90" role="img" aria-label="転生した世界とあなたの姿"></canvas></div>
+<section class="card" id="stage"></section>
+<section class="card hide" id="statbox"><div class="stats" id="stats"></div></section>
+<section class="card hide" id="logbox"><p class="meta">これまでの人生</p><ul class="log" id="log"></ul></section>
+</main>
+<script>
+const K=["体","知","魅","運","財"];
+const W=[["剣と魔法の王国","王国"],["歯車が回る蒸気都市","蒸気都市"],["海底に沈んだ古代文明","海底都市"],["妖怪が暮らす江戸","江戸の町"],["星々を渡る移民船団","船団"],["猫が国を治める世界","猫の国"]];
+const B=[["貧しい農家の子",{体:2,財:-2}],["名門貴族の子",{財:3,知:1,体:-1}],["身寄りのない孤児",{運:-1,体:1,魅:1}],["商人の子",{財:2,魅:1}],["旅芸人の子",{魅:2,運:1,財:-1}],["学者の子",{知:3,体:-1}]];
+const S=[
+{n:"幼少期",a:[3,6],e:[
+{t:"ある日、前世の記憶がふいによみがえった。",c:[["黙って隠す","周囲に悟られぬまま、あなたは静かに賢くなった。",{知:1,運:1}],["家族に打ち明ける","「不思議な子だ」と評判になったが、少し浮いてしまった。",{魅:1,運:-1}],["知識を先取りして遊ぶ","同年代の誰よりも物知りな子になった。",{知:2}]]},
+{t:"{w}の裏庭で、見たことのない光るものを見つけた。",c:[["そっと触れてみる","指先が温かくなり、不思議と体が軽くなった。",{体:1,運:1}],["大人を呼ぶ","大人たちは感心し、あなたを褒めてくれた。",{魅:1}],["見なかったことにする","何も起きなかった。ただ、少しだけ惜しい気がした。",{体:1}]]}]},
+{n:"少年期",a:[7,12],e:[
+{t:"近所の子どもたちが「{w}の探検」に誘ってきた。",c:[["先頭に立って参加する","泥だらけで駆け回り、一生ものの友達ができた。",{体:1,魅:2}],["一人で本を読み続ける","世界の仕組みが少しずつ見えてきた。",{知:2}]]},
+{t:"市場で迷子になってしまった。",c:[["大声で助けを求める","親切な人に連れられて、思わぬ縁がつながった。",{魅:1,運:1}],["自力で帰り道を探す","遠回りしたが、街の地理を完全に覚えた。",{体:1,知:1}],["路地裏の古道具屋に入る","店主に気に入られ、小さな宝物をもらった。",{運:2,財:1}]]}]},
+{n:"青年期",a:[13,18],e:[
+{t:"旅立ちの季節。{w}で、師匠になってくれそうな人物が現れた。",c:[["弟子入りする","厳しい修行の日々。だが確かな力が身についた。",{知:2,体:1,財:-1}],["断って独学で進む","遠回りだったが、自分だけの道を見つけた。",{知:1,運:1}],["街で働いて稼ぐ","汗水たらして働き、手元にお金が残った。",{財:2,体:1}]]},
+{t:"運命を感じる相手と出会った。",c:[["想いを伝える","勇気が実り、かけがえのない時間が始まった。",{魅:2,運:1}],["まず友達として関わる","ゆっくり、でも確実に絆が深まった。",{魅:1,知:1}],["今は自分の道を優先する","恋は後回し。その分、目標へ一直線に進んだ。",{知:1,財:1}]]}]},
+{n:"成人期",a:[19,30],e:[
+{t:"大きな仕事の話が舞い込んだ。成功すれば名が売れるが、失敗の危険もある。",c:[["迷わず挑戦する","大成功とはいかなかったが、大きな経験と報酬を得た。",{財:2,体:-1}],["仲間を集めて挑む","みなで力を合わせ、仕事も信頼も手に入れた。",{魅:2,財:1}],["慎重に見送る","安全な道を選び、静かに力を蓄えた。",{運:1,知:1}]]},
+{t:"{w}を揺るがす大事件が起きた。",c:[["最前線で立ち向かう","傷を負ったが、あなたの名は広く知られた。",{体:-1,魅:2,運:1}],["裏方として人々を支える","目立たなくとも、皆から頼られる存在になった。",{魅:1,知:1}],["混乱に乗じて商売を始める","ずる賢くも堅実に、財を成した。",{財:3,魅:-1}]]}]},
+{n:"壮年期",a:[31,50],e:[
+{t:"自分の店や工房、あるいは一門を持つ機会が訪れた。",c:[["独立して構える","忙しくも充実した日々。多くの人があなたを頼った。",{財:2,魅:1,体:-1}],["雇われ続ける","安定した生活の中で、家族との時間を大切にできた。",{体:1,運:1}]]},
+{t:"家庭と仕事、どちらを取るか迫られた。",c:[["家庭を取る","収入は減ったが、心はずっと満たされた。",{魅:1,運:2,財:-1}],["仕事を取る","地位と財は増えたが、疲れが体に残った。",{財:2,知:1,体:-2}],["必死で両立させる","綱渡りの毎日。それでも、なんとか乗り切った。",{体:-1,魅:1,運:1}]]}]},
+{n:"老年期",a:[51,70],e:[
+{t:"若者が「あなたの教えを乞いたい」と訪ねてきた。",c:[["喜んで全てを教える","あなたの知恵は、次の世代へと受け継がれていった。",{魅:2,知:1}],["一つだけ助言して見守る","若者は自分の力で道を切り拓いていった。",{知:1,運:1}]]},
+{t:"人生最後の冒険を思いつき、胸が高鳴った。",c:[["荷をまとめて旅に出る","老体に鞭打つ旅。だが景色は、何よりの宝だった。",{体:-1,運:2,魅:1}],["縁側で思い出を綴る","静かな時間の中、一生が一冊の本になった。",{知:2}],["家族と穏やかに過ごす","笑い声の絶えない、温かな日々が続いた。",{魅:2,体:1}]]}]}
+];
+const EP={体:"その足で、誰よりも遠くまで歩いた人生だった。",知:"知ることを喜びとし、世界の謎に挑み続けた人生だった。",魅:"多くの人に囲まれ、愛された人生だった。",運:"不思議と風が味方した、幸運な人生だった。",財:"大きな財をなし、豊かさの中で生きた人生だった。"};
+const R=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const P=a=>a[R(0,a.length-1)];
+const $=id=>document.getElementById(id);
+let g;
+function start(){
+  const w=P(W),b=P(B),s={};
+  K.forEach(k=>s[k]=Math.max(0,R(2,6)+(b[1][k]||0)));
+  g={w,b,s,age:0,i:0,life:0,log:[]};
+  g.life=30+s.体*5+R(0,30);
+  $("log").innerHTML="";
+  $("stage").innerHTML=`<p class="meta">目覚めると、そこは…</p><p class="big">${w[0]}</p><p>あなたは${b[0]}として生まれた。まだ何も分からない赤ん坊だが、前世の記憶がうっすら残っている気がする。</p><button class="main" id="go">この一生を歩き始める</button>`;
+  $("go").onclick=next;
+  ["statbox","logbox"].forEach(i=>$(i).classList.remove("hide"));
+  $("logbox").classList.add("hide");
+  render({});
+}
+const Q=(x,c,a,b,w,h)=>{x.fillStyle=c;x.fillRect(a,b,w,h)};
+const TH={
+"剣と魔法の王国":["#6aa7e8","#4d8a43",x=>{Q(x,"#fff",14,12,20,5);Q(x,"#fff",20,9,10,4);Q(x,"#fff",110,20,22,5);Q(x,"#8e96a8",100,36,40,30);Q(x,"#8e96a8",94,26,9,40);Q(x,"#8e96a8",137,26,9,40);for(let i=0;i<4;i++)Q(x,"#8e96a8",100+i*10,32,5,4);Q(x,"#3a3f55",114,52,12,14);Q(x,"#d04a4a",96,18,6,5);Q(x,"#555",95,18,1,10)}],
+"歯車が回る蒸気都市":["#b9a58a","#5a5048",x=>{Q(x,"#4a4038",14,40,24,26);Q(x,"#4a4038",52,30,18,36);Q(x,"#4a4038",110,36,28,30);Q(x,"#2f2822",20,30,5,10);Q(x,"#2f2822",58,20,5,10);Q(x,"#e2dcd2",18,22,8,6);Q(x,"#e2dcd2",22,14,10,7);Q(x,"#e2dcd2",56,12,8,6);Q(x,"#e8c26a",58,40,4,4);Q(x,"#e8c26a",118,44,4,4);Q(x,"#e8c26a",128,44,4,4)}],
+"海底に沈んだ古代文明":["#1b5a8a","#d8c58a",x=>{Q(x,"#cfe8f5",20,20,3,3);Q(x,"#cfe8f5",30,40,2,2);Q(x,"#cfe8f5",120,14,3,3);Q(x,"#8fb0c8",96,30,6,36);Q(x,"#8fb0c8",116,36,6,30);Q(x,"#8fb0c8",94,28,10,3);Q(x,"#e0607a",20,56,4,10);Q(x,"#e0607a",28,52,4,14);Q(x,"#f2d24a",50,30,7,4);Q(x,"#f2d24a",57,29,3,6)}],
+"妖怪が暮らす江戸":["#f0c19a","#7a5a3a",x=>{Q(x,"#f7e6a8",122,10,14,14);Q(x,"#3b3b4f",86,38,56,6);Q(x,"#e8dcc0",92,44,44,22);Q(x,"#7a5a3a",110,50,8,16);Q(x,"#c0392b",18,32,44,4);Q(x,"#c0392b",24,36,4,30);Q(x,"#c0392b",52,36,4,30);Q(x,"#c0392b",22,42,36,3)}],
+"星々を渡る移民船団":["#0c0f2e","#3a3f66",x=>{for(let i=0;i<26;i++)Q(x,i%3?"#fff":"#f2d24a",(i*37)%160,(i*23)%58,1,1);Q(x,"#c77d4f",112,12,24,24);Q(x,"#a8643c",116,20,12,5);Q(x,"#d9c9a0",104,22,40,2);Q(x,"#9aa0c8",20,44,50,14);Q(x,"#c4c9e8",26,40,30,5);Q(x,"#6ad0f0",32,48,5,4);Q(x,"#6ad0f0",44,48,5,4)}],
+"猫が国を治める世界":["#f3d6e4","#8cc57a",x=>{Q(x,"#fff",16,12,18,5);Q(x,"#fff",100,18,20,5);[[22,"#f08aa8"],[108,"#f2d24a"]].forEach(([a,c])=>{Q(x,c,a,44,24,22);Q(x,c,a,38,6,6);Q(x,c,a+18,38,6,6);Q(x,"#3a3f55",a+9,54,6,12);Q(x,"#fff",a+4,48,4,4);Q(x,"#fff",a+16,48,4,4)})}]
+};
+function drawOld(dead){
+const cv=$("cv"),x=cv.getContext("2d"),t=TH[g.w[0]];
+Q(x,t[0],0,0,160,90);t[2](x);Q(x,t[1],0,66,160,24);Q(x,"rgba(0,0,0,.18)",0,66,160,2);
+const a=g.age;
+if(dead){Q(x,"#9aa0ac",72,52,12,16);Q(x,"#9aa0ac",73,50,10,2);Q(x,"#555a66",77,54,2,9);Q(x,"#555a66",75,57,6,2);Q(x,"#e0607a",66,66,2,2);Q(x,"#f2d24a",88,66,2,2);Q(x,"rgba(0,0,0,.28)",0,0,160,90);return}
+x.save();x.translate(WX,0);Q(x,"rgba(0,0,0,.22)",70,67,12,2);x.translate(0,-BOB);const h=a<4?10:a<13?16:22,lg=h>12?5:2,top=68-h;
+Q(x,"#2a2030",72,top-1,8,8);Q(x,"#2a2030",71,top+5,10,h-5-lg);const cl=["#e8c26a","#6ac08a","#4a7fd0","#d86a5a","#9a6ad0","#7a8a7a"][Math.min(g.i,5)];
+const hr=a>=55?"#e8e8ee":["#3a2a20","#8a5a2a","#222","#c0603a"][g.b[0].length%4];
+Q(x,"#3a3a4a",73,68-lg,2,lg);Q(x,"#3a3a4a",77,68-lg,2,lg);
+Q(x,cl,72,top+6,8,h-6-lg);Q(x,cl,71,top+7,1,Math.min(4,h-9));Q(x,cl,80,top+7,1,Math.min(4,h-9));
+Q(x,"#f1c9a0",73,top,6,6);Q(x,hr,73,top,6,2);Q(x,hr,73,top+2,1,2);Q(x,hr,78,top+2,1,2);
+Q(x,"#222",74,top+3,1,1);Q(x,"#222",77,top+3,1,1);
+if(a>=55)Q(x,"#7a5a3a",82,68-13,1,13);x.restore()}
+let BOB=0,T=0,PT=[],BU=[],WX=0,WT=0,LP=0,SEA=-1,SPD=1;
+const AE=[
+["風邪をひいて、数日寝込んでしまった。",{体:-1},0],
+["季節の祭りで、おなかが痛くなるほど笑った。",{魅:1},3],
+["道端で小銭を拾った。",{財:1},4],
+["{w}の空を見上げ、ぼんやりと考え込んだ。",{知:1},5],
+["不思議な夢を見た。前世の夢だった気がする。",{},0],
+["毎朝の散歩が、すっかり日課になった。",{体:1},6],
+["大事にしていた物をなくしてしまった。",{運:-1},5],
+["珍しい本を見つけて、夢中で読みふけった。",{知:1},8],
+["近所の人と立ち話をして、仲良くなった。",{魅:1},5],
+["大雨で家の屋根が傷み、修理に追われた。",{財:-1},10],
+["友人と朝まで語り明かした。",{魅:1},13],
+["見知らぬ誰かに、思いがけず親切にされた。",{運:1},4],
+["季節の変わり目に、ふと昔のことを思い出した。",{},15],
+["{w}の名物を食べて、心がほっとした。",{体:1},6]
+];
+function setSpd(n){SPD=n;document.querySelectorAll(".spd button").forEach(c=>c.classList.toggle("main",+c.dataset.s===SPD))}
+addEventListener("keydown",e=>{if(LP&&["1","2","4"].includes(e.key))setSpd(+e.key)});
+function rlog(){$("log").innerHTML=g.log.map(l=>`<li${l[2]?' style="opacity:.65"':""}><b>${l[0]}歳</b>${l[1]}</li>`).reverse().join("")}
+function lapse(cb){
+const from=g.age,to=g.tg,st=S[Math.min(g.i,5)];LP=1;g.skip=0;
+$("stage").innerHTML=`<p class="meta">${st.n}・時が流れる</p><p class="big" id="ly"></p><p class="meta" id="le">&nbsp;</p><div class="spd"><button data-s="1">×1</button><button data-s="2">×2</button><button data-s="4">×4</button></div>`;
+document.querySelectorAll(".spd button").forEach(b=>b.onclick=()=>setSpd(+b.dataset.s));setSpd(SPD);
+let y=from;
+const fin=()=>{LP=0;WT=0;SEA=-1;g.skip=0};
+(function step(){
+y++;
+if(y>=g.life){fin();return die(g.life)}
+if(y>=to){fin();return cb()}
+g.age=y;SEA=y%4;
+WT=to-from>1?Math.round(34*Math.sin(Math.PI*2*(y-from)/(to-from))):0;
+$("ly").textContent=`${y}歳 ${["春","夏","秋","冬"][SEA]}`;
+if(Math.random()<.45){
+const e=P(AE.filter(q=>y>=q[2])),t=e[0].replace(/\{w\}/g,g.w[1]);
+K.forEach(k=>{if(e[1][k]){g.s[k]=Math.max(0,g.s[k]+e[1][k]);if(k==="体")g.life+=e[1][k]*5}});
+g.log.push([y,t,1]);rlog();$("logbox").classList.remove("hide");render(e[1]);
+$("le").textContent=t;
+}else $("le").innerHTML="&nbsp;";
+paint();
+setTimeout(step,1300/SPD);
+})();
+}
+const SC={体:"#d9534f",知:"#4a7fd0",魅:"#d6609a",運:"#d9a62e",財:"#3f9a63"};
+const RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+function burst(){for(let k=0;k<16;k++)BU.push({x:76,y:56,vx:(Math.random()-.5)*3,vy:-Math.random()*3,l:14})}
+function fx(x){
+const n=g.w[0],i=Math.min(g.i,5);
+if(SEA>=0&&!g.dead)Q(x,["rgba(255,180,200,.1)","rgba(255,240,120,.08)","rgba(255,120,40,.13)","rgba(200,225,255,.18)"][SEA],0,0,160,90);
+if(g.dead)Q(x,"rgba(10,10,60,.4)",0,0,160,90);
+else if(i>=4)Q(x,"rgba(255,130,50,"+(i==4?.1:.2)+")",0,0,160,90);
+else if(i<=1)Q(x,"rgba(255,240,200,.08)",0,0,160,90);
+if(/王国|江戸|猫/.test(n))[[10,10],[70,6],[120,16]].forEach(([c,y],k)=>{const px=((c+T*(.04+k*.02))%200)-30;Q(x,"rgba(255,255,255,.85)",px,y,16,4);Q(x,"rgba(255,255,255,.85)",px+3,y-2,9,3)});
+if(!PT.length)for(let k=0;k<22;k++)PT.push({x:R(0,159),y:R(0,89),v:.3+Math.random()*.5,s:Math.random()});
+const up=/海底/.test(n),col=/江戸|猫/.test(n)?"#ffd0e0":/蒸気/.test(n)?"#ffb35a":/海底/.test(n)?"#d8f0ff":/星々/.test(n)?"#ffffff":"#fff7b0";
+PT.forEach(p=>{p.y+=up?-p.v:p.v;p.x+=Math.sin((T+p.s*60)/20)*.4;if(p.y>90)p.y=0;if(p.y<0)p.y=90;Q(x,col,p.x|0,p.y|0,1,1)});
+BU=BU.filter(b=>b.l>0);BU.forEach(b=>{b.x+=b.vx;b.y+=b.vy;b.vy+=.15;b.l--;Q(x,b.l%2?"#ffe066":"#fff",b.x|0,b.y|0,2,2)})}
+function paint(){if(!g)return;drawOld(g.dead);fx($("cv").getContext("2d"))}
+function draw(dead){g.dead=dead;paint()}
+function loop(){T++;if(!RM&&T%4==0){if(WX!=WT)WX+=Math.sign(WT-WX)*Math.min(2,Math.abs(WT-WX));BOB=(T>>(LP||WX!=WT?3:5))%2;paint()}requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+function render(d){draw();
+  $("stats").innerHTML=K.map(k=>`<span>${k}</span><span class="bar" style="--ac:${SC[k]}"><i style="width:${Math.min(100,g.s[k]/12*100)}%"></i></span><span class="d ${d[k]>0?"up":"down"}">${g.s[k]}${d[k]?` (${d[k]>0?"+":""}${d[k]})`:""}</span>`).join("");
+}
+function next(){
+  if(g.i>=S.length){if(!g.tg){g.tg=g.life;return lapse(()=>next())}g.tg=0;return die(g.life)}
+  const st=S[g.i];
+  if(!g.tg){g.tg=Math.max(g.age+1,R(st.a[0],st.a[1]));return lapse(()=>next())}const tgx=g.tg;g.tg=0;g.age=tgx;
+  if(g.age>=g.life)return die(g.life);
+  const ev=P(st.e);draw();
+  $("stage").innerHTML=`<p class="meta">${g.age}歳 ・ ${st.n}</p><p class="big">${ev.t.replace(/\{w\}/g,g.w[1])}</p>`+ev.c.map((c,n)=>`<button data-n="${n}">${c[0]}</button>`).join("");
+  $("stage").querySelectorAll("button").forEach(b=>b.onclick=()=>pick(ev.c[b.dataset.n],st));
+}
+function pick(c,st){burst();
+  const d={...c[2]};
+  if(Math.random()*12<g.s.運-3){const k=P(K);d[k]=(d[k]||0)+1;c=[c[0],c[1]+"さらに、思いがけない幸運にも恵まれた。"]}
+  K.forEach(k=>{if(d[k]){g.s[k]=Math.max(0,g.s[k]+d[k]);if(k==="体")g.life+=d[k]*5}});
+  g.log.push([g.age,c[1]]);
+  rlog();
+  $("logbox").classList.remove("hide");
+  render(d);
+  $("stage").innerHTML=`<p class="meta">${g.age}歳 ・ ${st.n}</p><p>${c[1]}</p><button class="main" id="nx">時が流れる</button>`;
+  g.i++;
+  $("nx").onclick=next;
+  $("nx").focus();
+}
+function die(age){draw(true);
+  const t=K.reduce((a,k)=>a+g.s[k],0)+Math.floor(age/10);
+  const top=K.reduce((a,k)=>g.s[k]>g.s[a]?k:a,K[0]);
+  const rk=t>=48?"伝説の一生":t>=38?"実り多き一生":t>=28?"穏やかな一生":"ささやかな一生";
+  $("stage").innerHTML=`<p class="meta">${age}歳 ・ 幕引き</p><p class="rank">${rk}</p><p>${g.w[0]}で${g.b[0]}として生まれたあなたは、${age}年の生涯を静かに終えた。${EP[top]}</p><p class="meta" style="margin-top:18px">この人生をシェアする</p><div class="spd"><a class="btn" id="shx" target="_blank" rel="noopener">X</a><a class="btn" id="shl" target="_blank" rel="noopener">LINE</a><a class="btn" id="shf" target="_blank" rel="noopener">Facebook</a></div><div class="spd"><button id="shn">共有メニュー</button><button id="shc">コピー</button></div><button class="main" id="again">もう一度、転生する</button>`;
+  $("again").onclick=start;
+const u=location.href.split("#")[0],tx=`【転生ライフ】${g.w[0]}で${g.b[0]}として生まれ、${age}歳で生涯を終えた。評価：${rk}\n体${g.s.体} 知${g.s.知} 魅${g.s.魅} 運${g.s.運} 財${g.s.財}\n#転生ライフ`,e=encodeURIComponent;
+$("shx").href=`https://twitter.com/intent/tweet?text=${e(tx)}&url=${e(u)}`;
+$("shl").href=`https://social-plugins.line.me/lineit/share?url=${e(u)}&text=${e(tx)}`;
+$("shf").href=`https://www.facebook.com/sharer/sharer.php?u=${e(u)}`;
+function cp(){const f=tx+"\n"+u,ok=()=>{$("shc").textContent="コピーしました"};(navigator.clipboard?navigator.clipboard.writeText(f):Promise.reject()).then(ok).catch(()=>{const a=document.createElement("textarea");a.value=f;document.body.appendChild(a);a.select();try{document.execCommand("copy");ok()}catch(_){$("shc").textContent="コピーできません"}a.remove()})}
+$("shn").onclick=()=>{if(navigator.share)navigator.share({text:tx,url:u}).catch(()=>{});else cp()};
+$("shc").onclick=cp;
+}
+start();
+</script></body></html>
